@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Purple People Helper",
+    "version": "1.0",
+    "description": "Copy selected text and open a website with it as a query string.",
+    "permissions": [
+        "contextMenus",
+        "activeTab"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "action": {
+        "default_icon": {
+            "48": "icon48.png",
+            "192": "icon192.png"
+    }
+    
+    }
+
+}
