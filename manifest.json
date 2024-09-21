@@ -1,27 +1,29 @@
 {
     "manifest_version": 3,
-    "name": "Purple People Helper",
+    "name": "Purple People's Reader Helper",
     "version": "1.0",
-    "description": "Copy selected text and open a website with it as a query string.",
+    "description": "Sends selected text to PurplePeoplesReader.com when called by the user.",
     "permissions": [
         "contextMenus",
-        "activeTab"
+        "activeTab",
+        "scripting"
     ],
     "background": {
         "service_worker": "background.js"
     },
-    "content_scripts": [
-        {
-            "matches": ["<all_urls>"],
-            "js": ["content.js"]
-        }
-    ],
-    "action": {
+    "icons": {
+        "16": "images/icon16.png",
+        "32": "images/icon32.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "action" : {
         "default_icon": {
-            "48": "icon48.png",
-            "192": "icon192.png"
+            "16": "images/icon16.png",
+            "32": "images/icon32.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png",
+            "192": "images/icon192.png"
     }
-    
     }
-
 }
