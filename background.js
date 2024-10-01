@@ -24,12 +24,21 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 });
 
 function sendSelectedTextToPPR() {
-  const selectedText = window.getSelection().toString();
+  let selectedText = window.getSelection().toString();
   if (selectedText.trim() === "") {
     alert("Please select some text before using the context menu.");
-  } else {
+    return;
+  }
+
+  navigator.clipboard.writeText(selectedText).then(() => {
+    if (selectedText.length > 5000) {
+      selectedText = "";
+      alert("Your selected text is too long to pass in by URL. However, you can still paste it in manually.");
+    }
     const encodedText = encodeURIComponent(selectedText);
     const targetUrl = `https://purplepeoplesreader.com/list/USER/A1?text=${encodedText}`;
+    console.log('open');
     window.open(targetUrl, "_blank");
-  }
+  });
 }
+
